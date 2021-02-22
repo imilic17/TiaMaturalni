@@ -2,7 +2,7 @@
 $server="localhost";
 $username="root";
 $password="";
-$Baza="registracija";
+$Baza="tiamaturalni";
 
 $db=mysqli_connect ($server,$username,$password);
 $db_selected=mysqli_select_db ($db,$Baza);
