@@ -1,19 +1,17 @@
 <?php
-$server="localhost";
-$username="root";
-$password="";
-$Baza="tiamaturalni";
+include_once 'db_connection.php';
 
-$db=mysqli_connect ($server,$username,$password);
-$db_selected=mysqli_select_db ($db,$Baza);
 
-if(!$db){
+    $Ime=addslashes($_POST['Ime']);
+    $KorisnickoIme=$_POST['KorIme'];
+    $Email=$_POST['Email'];
+    $Lozinka=$_POST['Lozinka'];
 
-    die("Baza neuspješno spojena:" .mysqli_connect_errno());
-}
 
-else{
-    echo "Baza uspješno spojena";
-}
+    $sql="INSERT INTO korisnik (Ime, KorisnickoIme, Email, Lozinka)  VALUES ( '".$_POST['Ime']."','".$_POST['KorIme']."', '".$_POST['Email']."','".$_POST['Lozinka']."')";
+    $result=mysqli_query($db, $sql) or die("Greška");
+
+
+
 
 ?>
