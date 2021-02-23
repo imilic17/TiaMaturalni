@@ -135,7 +135,7 @@
 <hr><br><br>
 -->
     
-
+ 
 <div id="registracija" class="stranicaDisabled">
   <br><br><br>
   <div class="columns">
@@ -143,67 +143,72 @@
       
     </div>
  <div class="column is-6">
-  <form class="notification is-light">
+  <form class="notification is-light" id="unos" action="registracija.php" method="POST" enctype="multipart/form-data">
     <br>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Ime">
+      <input class="input is-dark" type="ime" placeholder="Ime" name="Ime" id="ime" onkeyup="validate();">
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
       <span class="icon is-small is-right">
         <i class="fas fa-check"></i>
+        <div id="errIme"></div>
       </span>
     </p>
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Korisničko ime">
+      <input class="input is-dark" type="KorIme" placeholder="Korisničko ime" name="KorIme" id="korime" onkeyup="validate();">
       <span class="icon is-small is-left">
         <i class="fas fa-user-circle"></i>
       </span>
       <span class="icon is-small is-right">
         <i class="fas fa-check"></i>
       </span>
+      <div id="errKorIme"></div>
     </p>
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Email">
+      <input class="input is-dark" type="email" placeholder="Email" name="Email" id="email" onkeyup="validate();">
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
       <span class="icon is-small is-right">
         <i class="fas fa-check"></i>
       </span>
+      <div id="errEmail"></div>
     </p>
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Lozinka">
+      <input class="input is-dark" type="password" placeholder="Lozinka" name="Lozinka" id="password" onkeyup="validate();">
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
       <span class="icon is-small is-right">
         <i class="fas fa-eye-slash"></i>
+        <div id="errPassword"></div>
       </span>
     </p>
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Ponovi lozinku">
+      <input class="input is-dark" type="password" placeholder="Ponovi lozinku" name="ponovljena_loznika" id="confirm" onkeyup="validate();">
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
       <span class="icon is-small is-right">
         <i class="fas fa-eye-slash"></i>
+        <div id="errConfirm"></div>
       </span>
     </p>
   </div>
   <div class="field">
     <p class="control">
       <br>
-      <button class="button is-dark">
+      <button class="button is-dark" type="submit" value="registriraj" id="registriraj"  disabled onclick="finalValidate();">
         Registriraj se
       </button>
     </p>
@@ -226,7 +231,7 @@
       
     </div>
     <div class="column is-6">
-  <form class="notification is-light">
+  <form class="notification is-light" action="prijava.php" method="POST" enctype="multipart/form-data">
     <br>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
