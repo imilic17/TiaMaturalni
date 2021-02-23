@@ -440,3 +440,68 @@ document.getElementById("prosjek_svi").innerHTML = "Imate bodova: " + ukupno;
     
     })
 }
+var divs = new Array();
+    divs[0] = "errIme";
+    divs[1] = "errKorIme";
+    divs[2] = "errEmail";
+    divs[3] = "errPassword";
+    divs[4] = "errConfirm";
+    function validate()
+    {
+        var inputs = new Array();
+        inputs[0] = document.getElementById('ime').value;
+        inputs[1] = document.getElementById('korime').value;
+        inputs[2] = document.getElementById('email').value;
+        inputs[3] = document.getElementById('password').value;
+        inputs[4] = document.getElementById('confirm').value;
+        var errors = new Array();
+        errors[0] = "<span style='color:red'>Unesite ime</span>";
+        errors[1] = "<span style='color:red'>Unesite korisničko ime</span>";
+        errors[2] = "<span style='color:red'>Unesite email</span>";
+        errors[3] = "<span style='color:red'>Unesite lozinku</span>";
+        errors[4] = "<span style='color:red'>Potvrdite lozinku</span>";
+        for (i in inputs)
+        {
+          var errMessage = errors[i];
+          var div = divs[i];
+          if (inputs[i] == "")
+              document.getElementById(div).innerHTML = errMessage;
+         else if (i==2)
+              {
+                var atpos=inputs[i].indexOf("@");
+                var dotpos=inputs[i].lastIndexOf(".");
+                if (atpos<1 || dotpos<atpos+2 || dotpos+2>=inputs[i].length)
+                  document.getElementById('errEmail').innerHTML = "<span style='color: red'>Unesite ispravnu email adresu</span>";
+                else
+                  document.getElementById(div).innerHTML = "OK!";
+              }
+              else if (i==4)
+          {
+            var first = document.getElementById('password').value;
+            var second = document.getElementById('confirm').value;
+            if (second != first)
+              document.getElementById('errConfirm').innerHTML = "<span style='color: red'>Lozinke se ne podudaraju</span>";
+            else
+                 document.getElementById(div).innerHTML = "OK!";
+          }
+          else
+              document.getElementById(div).innerHTML = "OK!";
+         }
+       } 
+       var form = document.getElementById('unos');
+       function finalValidate()
+       {
+        var count = 0;
+        for(i=0;i<5;i++)
+        {
+            var div = divs[i];
+            if(document.getElementById(div).innerHTML == "OK!")
+            count = count + 1;
+        }
+        if(count == 5)
+        button.disabled = false;
+        else
+        button.disabled=true;
+    }
+        form.addEventListener('submit', function(event){
+            event.preventDefault();})
