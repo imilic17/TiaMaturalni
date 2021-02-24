@@ -123,3 +123,7 @@ p{
       display: none;
     }
   }
+  #closed
+        {
+            display: none;
+        }
