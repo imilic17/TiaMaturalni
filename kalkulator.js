@@ -455,11 +455,11 @@ var divs = new Array();
         inputs[3] = document.getElementById('password').value;
         inputs[4] = document.getElementById('confirm').value;
         var errors = new Array();
-        errors[0] = "<span style='color:red'>Unesite ime</span>";
-        errors[1] = "<span style='color:red'>Unesite korisničko ime</span>";
-        errors[2] = "<span style='color:red'>Unesite email</span>";
-        errors[3] = "<span style='color:red'>Unesite lozinku</span>";
-        errors[4] = "<span style='color:red'>Potvrdite lozinku</span>";
+        errors[0] = "<span style='color:'LightCoral'>Unesite ime</span>";
+        errors[1] = "<span style='color:LightCoral'>Unesite korisničko ime</span>";
+        errors[2] = "<span style='color:LightCoral'>Unesite email</span>";
+        errors[3] = "<span style='color:LightCoral'>Unesite lozinku</span>";
+        errors[4] = "<span style='color:LightCoral'>Potvrdite lozinku</span>";
         for (i in inputs)
         {
           var errMessage = errors[i];
@@ -471,37 +471,20 @@ var divs = new Array();
                 var atpos=inputs[i].indexOf("@");
                 var dotpos=inputs[i].lastIndexOf(".");
                 if (atpos<1 || dotpos<atpos+2 || dotpos+2>=inputs[i].length)
-                  document.getElementById('errEmail').innerHTML = "<span style='color: red'>Unesite ispravnu email adresu</span>";
+                  document.getElementById('errEmail').innerHTML = "<span style='color: LightCoral'>Unesite ispravnu email adresu</span>";
                 else
-                  document.getElementById(div).innerHTML = "OK!";
+                  document.getElementById(div).innerHTML = "";
               }
               else if (i==4)
           {
             var first = document.getElementById('password').value;
             var second = document.getElementById('confirm').value;
             if (second != first)
-              document.getElementById('errConfirm').innerHTML = "<span style='color: red'>Lozinke se ne podudaraju</span>";
+              document.getElementById('errConfirm').innerHTML = "<span style='color: LightCoral'>Lozinke se ne podudaraju</span>";
             else
-                 document.getElementById(div).innerHTML = "OK!";
+                 document.getElementById(div).innerHTML = "";
           }
           else
-              document.getElementById(div).innerHTML = "OK!";
+              document.getElementById(div).innerHTML = "";
          }
-       } 
-       var form = document.getElementById('unos');
-       function finalValidate()
-       {
-        var count = 0;
-        for(i=0;i<5;i++)
-        {
-            var div = divs[i];
-            if(document.getElementById(div).innerHTML == "OK!")
-            count = count + 1;
         }
-        if(count == 5)
-        button.disabled = false;
-        else
-        button.disabled=true;
-    }
-        form.addEventListener('submit', function(event){
-            event.preventDefault();})
