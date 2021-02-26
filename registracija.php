@@ -46,7 +46,6 @@ if (isset($_POST['reg_user'])) {
     mysqli_query($db, $sql);
 
     $_SESSION['KorisnickoIme'] = $KorisnickoIme;
-  	$_SESSION['success'] = "Uspješno ste se prijavili";
   	header('location: index.php');
       }
 }
@@ -70,7 +69,6 @@ if (isset($_POST['login_user'])) {
         $result = mysqli_query($db, $query) or die(mysqli_error($db));
         if (mysqli_num_rows($result) == 1) {
           $_SESSION['KorisnickoIme'] = $KorisnickoIme;
-          $_SESSION['success'] = "Uspješno ste prijavljeni";
           header('location: index.php');
         }else {
             array_push($errors, "Korisničko ime i lozinka se ne podudaraju");
@@ -97,7 +95,7 @@ if (isset($_POST['login_user'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Studentski dom - bodovi</title>
 </head>
-<<body">
+<body">
 
 
 
