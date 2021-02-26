@@ -30,8 +30,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Studentski dom - bodovi</title>
 </head>
-<body>
-
+<body onLoad="document.forms['prosjek'].elements['t1'].focus();"> 
   <div class="prolaz"> 
      	<!-- notification message -->
   <?php if (isset($_SESSION['success'])) : ?>
@@ -383,7 +382,6 @@ session_start();
 
       <input id = "button" type = "button" value = "Provjeri bodove" onclick = "Izracunaj();">
      </form>
-
      
 
 <div id = "rezultat_prosjeka">
@@ -704,13 +702,13 @@ session_start();
 <br>
 </div>
 
-
+<!--
 <div id="drugaGodPreddiplomski" class="stranicaDisabled">
   <div id="anketa">
     <pre class="upitnik"><span class="upitnikText">Potrebno je izračunati i unijeti<br> osobni prosjek ocjena na tri decimale iz svih <br>razreda srednjoškolskog obrazovanja</span>&#10068;</pre>
 <h1 class="subtitle is-1">Prosjek ocjena</h1>
-<!-- izračunani osobni prosjek na 3 DECIMALE(sva 4 razreda) (OBVEZNO) podjeliti s prosjekom svih brucoša na 3 decimale(prosjek brucoša = 4,314) 
-dobiveni broj s 3 decimale množi se sa 1000 i dobiveni rezultat su bodovi -->
+ izračunani osobni prosjek na 3 DECIMALE(sva 4 razreda) (OBVEZNO) podjeliti s prosjekom svih brucoša na 3 decimale(prosjek brucoša = 4,314) 
+dobiveni broj s 3 decimale množi se sa 1000 i dobiveni rezultat su bodovi 
 <br><br>
     <form name="prosjek" id="prosjek">
       <div class="field is-horizontal">
@@ -785,7 +783,7 @@ dobiveni broj s 3 decimale množi se sa 1000 i dobiveni rezultat su bodovi -->
 </div>
 </div>
 </div>
-
+-->
 
 
 <div id="subvencioniranoStanovanje" class="stranicaDisabled">
