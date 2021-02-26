@@ -42,7 +42,7 @@ if (isset($_POST['reg_user'])) {
         $Lozinka = ($Lozinka);//encrypt the password before saving in the database - nije napravljeno
   
 
-    $sql="INSERT INTO  isnik (Ime, KorisnickoIme, Email, Lozinka)  VALUES ( '".$_POST['Ime']."','".$_POST['KorisnickoIme']."', '".$_POST['Email']."','".$_POST['Lozinka']."')";
+    $sql="INSERT INTO  korisnik (Ime, KorisnickoIme, Email, Lozinka)  VALUES ( '".$_POST['Ime']."','".$_POST['KorisnickoIme']."', '".$_POST['Email']."','".$_POST['Lozinka']."')";
     mysqli_query($db, $sql);
 
     $_SESSION['KorisnickoIme'] = $KorisnickoIme;
