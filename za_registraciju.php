@@ -42,11 +42,11 @@
               Početna
             </a>
       
-            <a id="navOStranici" class="navbar-item">
+            <a id="navOStranici" class="navbar-item" href="ostranici.php">
               O stranici
             </a>
       
-            <a class="navbar-item">
+            <a id="ljestvica" class="navbar-item" href="ljestvica.php">
               Ljestvica
             </a>
 
@@ -56,13 +56,13 @@
               </a>
 
               <div class="navbar-dropdown">
-                <a id="navBrucosi" class="navbar-item">
+                <a id="navBrucosi" class="navbar-item" href="brucosi.php">
                   Brucoši
                 </a>
-                <a id="navDrugaGodPreddiplomski" class="navbar-item">
+                <a id="navPreddiplomski" class="navbar-item" href="preddiplomski.php">
                   Preddiplomski studij
                 </a>
-                <a class="navbar-item">
+                <a id="navDiplomski"class="navbar-item" href="diplomski.php">
                   Diplomski studij
                 </a>
             
@@ -75,11 +75,11 @@
                 </a>
         
                 <div class="navbar-dropdown">
-                  <a id="navSubvencioniranoStanovanje" class="navbar-item">
+                  <a id="navSubvencioniranoStanovanje" class="navbar-item" href="subven_stan.php">
                     Subvencioniranom stanovanju
                   </a>
                   <hr class="navbar-divider">
-                  <a id="navPrijaviProblem" class="navbar-item">
+                  <a id="navPrijaviProblem" class="navbar-item" href="prijavi_problem.php">
                     Prijavi problem
                   </a>
                 </div>
@@ -88,9 +88,7 @@
               <a href="#kontakt" class="navbar-item">
                   Kontakt
               </a>
-        
-        </div>
-      
+              </div>
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
