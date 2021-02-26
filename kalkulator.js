@@ -488,3 +488,4 @@ var divs = new Array();
               document.getElementById(div).innerHTML = "";
          }
         }
+
