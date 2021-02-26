@@ -449,11 +449,11 @@ var divs = new Array();
     function validate()
     {
         var inputs = new Array();
-        inputs[0] = document.getElementById('ime').value;
-        inputs[1] = document.getElementById('korime').value;
-        inputs[2] = document.getElementById('email').value;
-        inputs[3] = document.getElementById('password').value;
-        inputs[4] = document.getElementById('confirm').value;
+        inputs[0] = document.getElementById("ime").value;
+        inputs[1] = document.getElementById("KorisnickoIme").value;
+        inputs[2] = document.getElementById("email").value;
+        inputs[3] = document.getElementById("password").value;
+        inputs[4] = document.getElementById("confirm").value;
         var errors = new Array();
         errors[0] = "<span style='color:'LightCoral'>Unesite ime</span>";
         errors[1] = "<span style='color:LightCoral'>Unesite korisničko ime</span>";
