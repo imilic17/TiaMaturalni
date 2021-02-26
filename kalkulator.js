@@ -114,17 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
         drugaGodPreddiplomski.classList.remove('stranicaDisabled');
     })
 
-    navRegistracija.addEventListener('click',()=>{
+    /*/navRegistracija.addEventListener('click',()=>{
         
         stranica0.classList.add('stranicaDisabled');
         registracija.classList.remove('stranicaDisabled');
     })
-
     navPrijava.addEventListener('click',()=>{
         
         stranica0.classList.add('stranicaDisabled');
         prijava.classList.remove('stranicaDisabled');
-    })
+    })*/
+
 
     navSubvencioniranoStanovanje.addEventListener('click',()=>{
         
