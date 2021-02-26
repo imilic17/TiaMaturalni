@@ -1,3 +1,17 @@
+<?php
+session_start(); 
+
+  if (!isset($_SESSION['KorisnickoIme'])) {
+    $_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['KorisnickoIme']);
+  	header("location: login.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,19 +25,36 @@
    <!--
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
      -->
-     <link rel="stylesheet" href="bulma-0.9.1/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="bulma-0.9.1/bulma/css/bulma.min.css">
     <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Studentski dom - bodovi</title>
 </head>
-<body onLoad="document.forms['prosjek'].elements['t1'].focus();">
+<body>
 
+  <div class="prolaz"> 
+     	<!-- notification message -->
+  <?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success">
+      	<h3>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
 
-<div class="container">
-
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <!-- logged in user information -->
+      <?php  if (isset($_SESSION['KorisnickoIme'])) : ?>
+                <p>Welcome <strong><?php echo $_SESSION['KorisnickoIme']; ?></strong></p>
+                <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+              <?php endif ?>
+              </div>
+              <div class="container">
+   <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="index.html">
+          <a class="navbar-item" href="index.php">
             <img src="Logo2.png" height="48" width="40">
             
           </a>
@@ -37,7 +68,7 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="index.html">
+            <a class="navbar-item" href="index.php">
               Početna
             </a>
       
@@ -87,57 +118,30 @@
               <a href="#kontakt" class="navbar-item">
                   Kontakt
               </a>
-        
-        </div>
+
+
+
+         
       
+              </div>
+      </nav>
+      
+
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a id="navRegistracija" class="button is-link">
+                <a id="navRegistracija" class="button is-link" href="za_registraciju.php">
                   <strong>Registriraj se</strong>
                 </a>
-                <a id="navPrijava" class="button is-light">
+                <a id="navPrijava" class="button is-light" href="login.php">
                   Prijavi se
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-      </nav>
+          </div> 
+      
 
 
-
-
-<!--
-    <header class="logo">
-        
-        <a href="index.html">
-            <img src="Logo3.png" alt="Logo3" height="100" width="100" href="index.html"><p class="sdb"><b>STUDENTSKI<br> DOM - BODOVI</b></p> </a>
-            </header>
-            <nav>
-            <a id="pocetnaStranica" href="index.html">POČETNA STRANICA</a>
-            <div class="dropdown">
-              <button class="dropbtn">KALKULATOR BODOVA
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
-                <a href="kalk_bodova_brucosi.html">za buduće brucoše</a>
-                <a href="#">Preddiplomski 1. godina</a>
-                <a href="#">Preddiplomski 2. godina</a>
-                <a href="#">Preddiplomski 3. godina</a>
-                <a href="#">Diplomski 1. godina</a>
-                <a href="#">Diplomski 2. godina</a>
-              </div>
-              </div>
-              <a id="izracunatiBodovi" href="izracunati_bodovi.html">IZRAČUNATI BODOVI</a>
-              <a id="izravanUpis" href="#izravanUpis">IZRAVAN UPIS</a>
-              <a href="#kontakt">KONTAKT</a>
-        </nav>
-    </header>
-<hr><br><br>
--->
-    
- 
 <div id="registracija" class="stranicaDisabled">
   <br><br><br>
   <div class="columns">
@@ -145,12 +149,11 @@
       
     </div>
  <div class="column is-6">
-  <form class="notification is-light" id="unos" action="registracija.php" method="POST" enctype="multipart/form-data">
-  <?php include('errors.php'); ?>
+ <form class="notification is-light" id="unos" action="za_registraciju.php" method="POST" enctype="multipart/form-data"
     <br>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="ime" placeholder="Ime" name="Ime" id="ime" required onkeyup="validate();">
+      <input class="input is-dark" type="ime" placeholder="Ime" name="Ime" id="ime">
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
@@ -159,7 +162,7 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="KorIme" placeholder="Korisničko ime" name="KorIme" id="korime" required onkeyup="validate();">
+      <input class="input is-dark" type="text" placeholder="Korisničko ime" name="KorisnickoIme" id="KorisnickoIme" >
       <span class="icon is-small is-left">
         <i class="fas fa-user-circle"></i>
       </span>
@@ -168,7 +171,7 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Email" name="Email" id="email" required onkeyup="validate();">
+      <input class="input is-dark" type="email" placeholder="Email" name="Email" id="email" ">
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
@@ -177,7 +180,7 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Lozinka" name="Lozinka" id="password" required onkeyup="validate();">
+      <input class="input is-dark" type="password" placeholder="Lozinka" name="Lozinka" id="password">
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
@@ -187,7 +190,7 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Ponovi lozinku" name="ponovljena_loznika" id="confirm" required onkeyup="validate();">
+      <input class="input is-dark" type="password" placeholder="Ponovi lozinku" name="Ponovljena_lozinka" id="confirm">
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
@@ -198,11 +201,14 @@
   <div class="field">
     <p class="control">
       <br>
-      <button class="button is-dark" type="submit" value="registriraj" id="registriraj">
+      <button class="button is-dark" type="submit" name="reg_user" value="registriraj" id="registriraj">
         Registriraj se
       </button>
     </p>
   </div>
+  <p>
+  		Već imaš korisnički račun <a href="login.php">Prijavi se</a>
+  	</p>
   <br>
 </form>
 </div>
@@ -221,11 +227,12 @@
       
     </div>
     <div class="column is-6">
-  <form class="notification is-light" action="prijava.php" method="POST" enctype="multipart/form-data">
-    <br>
+  <form class="notification is-light" action="login.php" method="POST" enctype="multipart/form-data">
+
+  <br>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Korisničko ime">
+      <input class="input is-dark" type="email" placeholder="Korisničko ime" name="KorisnickoIme">
       <span class="icon is-small is-left">
         <i class="fas fa-user-circle"></i>
       </span>
@@ -236,7 +243,7 @@
   </div>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Lozinka">
+      <input class="input is-dark" type="password" placeholder="Lozinka" name="Lozinka">
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
@@ -248,12 +255,15 @@
   <div class="field">
     <p class="control">
       <br>
-      <button class="button is-dark">
+      <button class="button is-dark" type="submit" name="login_user">
         Prijavi se
       </button>
     </p>
   </div>
   <br>
+  <p>
+  		Još nisi u bazi? <a href="register.php">Registriraj se</a>
+  	</p>
 </form>
   </div>
   <div class="column is-3">
@@ -262,7 +272,7 @@
   </div>
 <br><br><br>
 </div>
-
+-->
 
 <div id="stranica0">
   <br><br>
@@ -301,6 +311,7 @@
 
   <br><br>
 </div>
+    -->
 
 
 <div id="stranica1" class="stranicaDisabled">
@@ -1069,7 +1080,7 @@ dobiveni broj s 3 decimale množi se sa 1000 i dobiveni rezultat su bodovi -->
   <div class="columns is-variable is-4">
     <div class="column is-one-third">
       <br><br><br><br><br><br><br>
-      <a href="index.html">
+      <a href="index.php">
        <img src="Logo3.png" height="100" width="100"></a>
     </div>
     <div class="column is-one-third" id="OMeni">
@@ -1111,18 +1122,6 @@ dobiveni broj s 3 decimale množi se sa 1000 i dobiveni rezultat su bodovi -->
       <p id="kontakt">Sva prava pridržana. &copy; 2021. </p>
     </div>
   </footer>
-
-
-
-
-
-
-
-
-
-
-
-    
 
 </div>
 
