@@ -45,14 +45,10 @@ session_start();
       </div>
   	<?php endif ?>
 
-      <!-- logged in user information -->
-      <?php  if (isset($_SESSION['KorisnickoIme'])) : ?>
-                <p>Welcome <strong><?php echo $_SESSION['KorisnickoIme']; ?></strong></p>
-                <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-              <?php endif ?>
-              </div>
-              <div class="container">
-   <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+     
+    <div class="container">
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="index.php">
             <img src="Logo2.png" height="48" width="40">
@@ -118,161 +114,30 @@ session_start();
               <a href="#kontakt" class="navbar-item">
                   Kontakt
               </a>
-
-
-
-         
-      
-              </div>
-      </nav>
-      
-
+        
+        </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons">
-                <a id="navRegistracija" class="button is-link" href="za_registraciju.php">
-                  <strong>Registriraj se</strong>
+            <div class="buttons">
+             <!-- logged in user information -->
+             <?php  if (isset($_SESSION['KorisnickoIme'])) : ?>
+                <a id="navKorisnik">  Bok <strong><?php echo $_SESSION['KorisnickoIme']; ?></strong> </a>
+                <a id="navOdjava" class="media" href="index.php?logout='1'">
+                <figure>
+              <img src="log_out.jpg" alt="odjava">
+            </figure>
                 </a>
-                <a id="navPrijava" class="button is-light" href="login.php">
-                  Prijavi se
-                </a>
+              </div>
+              <?php endif ?>
               </div>
             </div>
           </div> 
-      
+            
+          </div>
+      </nav>
 
 
-<div id="registracija" class="stranicaDisabled">
-  <br><br><br>
-  <div class="columns">
-    <div class="column is-3">
-      
-    </div>
- <div class="column is-6">
- <form class="notification is-light" id="unos" action="za_registraciju.php" method="POST" enctype="multipart/form-data"
-    <br>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="ime" placeholder="Ime" name="Ime" id="ime">
-      <span class="icon is-small is-left">
-        <i class="fas fa-user"></i>
-      </span>
-        <div id="errIme"></div>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="text" placeholder="Korisničko ime" name="KorisnickoIme" id="KorisnickoIme" >
-      <span class="icon is-small is-left">
-        <i class="fas fa-user-circle"></i>
-      </span>
-      <div id="errKorIme"></div>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Email" name="Email" id="email" ">
-      <span class="icon is-small is-left">
-        <i class="fas fa-envelope"></i>
-      </span>
-      <div id="errEmail"></div>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Lozinka" name="Lozinka" id="password">
-      <span class="icon is-small is-left">
-        <i class="fas fa-lock"></i>
-      </span>
-        <div id="errPassword"></div>
- 
-    </p>
-  </div>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Ponovi lozinku" name="Ponovljena_lozinka" id="confirm">
-      <span class="icon is-small is-left">
-        <i class="fas fa-lock"></i>
-      </span>
-        <div id="errConfirm"></div>
-      </span>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control">
-      <br>
-      <button class="button is-dark" type="submit" name="reg_user" value="registriraj" id="registriraj">
-        Registriraj se
-      </button>
-    </p>
-  </div>
-  <p>
-  		Već imaš korisnički račun <a href="login.php">Prijavi se</a>
-  	</p>
-  <br>
-</form>
-</div>
-<div class="column is-3">
-      
-</div>
-  </div>
-<br><br><br>
-</div>
 
-
-<div id="prijava" class="stranicaDisabled">
-  <br><br><br>
-  <div class="columns">
-    <div class="column is-3">
-      
-    </div>
-    <div class="column is-6">
-  <form class="notification is-light" action="login.php" method="POST" enctype="multipart/form-data">
-
-  <br>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="email" placeholder="Korisničko ime" name="KorisnickoIme">
-      <span class="icon is-small is-left">
-        <i class="fas fa-user-circle"></i>
-      </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-check"></i>
-      </span>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control has-icons-left has-icons-right">
-      <input class="input is-dark" type="password" placeholder="Lozinka" name="Lozinka">
-      <span class="icon is-small is-left">
-        <i class="fas fa-lock"></i>
-      </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-eye-slash"></i>
-      </span>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control">
-      <br>
-      <button class="button is-dark" type="submit" name="login_user">
-        Prijavi se
-      </button>
-    </p>
-  </div>
-  <br>
-  <p>
-  		Još nisi u bazi? <a href="register.php">Registriraj se</a>
-  	</p>
-</form>
-  </div>
-  <div class="column is-3">
-    
-  </div>
-  </div>
-<br><br><br>
-</div>
--->
 
 <div id="stranica0">
   <br><br>
@@ -311,7 +176,7 @@ session_start();
 
   <br><br>
 </div>
-    -->
+  
 
 
 <div id="stranica1" class="stranicaDisabled">
